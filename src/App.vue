@@ -1,6 +1,10 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
+    <v-app-bar
+      app
+      color="primary"
+      dark
+    >
       <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
@@ -21,7 +25,7 @@
         />
       </div>
 
-      <v-spacer></v-spacer>
+      <v-spacer />
 
       <v-btn
         href="https://github.com/vuetifyjs/vuetify/releases/latest"
@@ -34,22 +38,35 @@
     </v-app-bar>
 
     <v-main>
+      <v-container>
+        <v-row>
+          <ArticleCard
+            v-for="(article, index) in articles"
+            :key="index"
+            :article="article"
+          />
+        </v-row>
+      </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script>
 import ApiClient from './services/ApiService';
+import ArticleCard from './components/ArticleCard.vue';
 
 export default {
   name: 'App',
   data: () => ({
-    data: {},
+    articles: [],
   }),
+  components: {
+    ArticleCard,
+  },
   created() {
     try {
       ApiClient.getArticles().then((res) => {
-        this.data = res.data.response;
+        this.articles = res.data.response.results;
       });
     } catch (err) {
       // eslint-disable-next-line

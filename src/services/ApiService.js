@@ -10,6 +10,7 @@ const apiClient = axios.create({
 
 const params = new URLSearchParams([
   ['api-key', process.env.VUE_APP_API_KEY],
+  ['show-fields', 'thumbnail,trailText'],
 ]);
 
 export default {
