@@ -1,26 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="blue darken-4"
-      dark
-      flat
-      extended
-      class="d-flex align-center"
-    >
-      <div class="d-flex flex-column">
-        <h1
-          class="font-weight-black text-uppercase amber--text"
-          :style="$vuetify.breakpoint.xs && {'font-size': '1.5rem'}"
-        >
-          News App
-        </h1>
-        <span class="subheading">Keep up with breaking news</span>
-      </div>
-
-      <v-spacer />
-    </v-app-bar>
-
+    <Navbar />
     <v-main>
       <v-container>
         <v-row>
@@ -56,6 +36,7 @@
 
 <script>
 import ApiClient from './services/ApiService';
+import Navbar from './components/Navbar.vue';
 import ArticleCard from './components/ArticleCard.vue';
 
 export default {
@@ -65,6 +46,7 @@ export default {
   }),
   components: {
     ArticleCard,
+    Navbar,
   },
   created() {
     try {
