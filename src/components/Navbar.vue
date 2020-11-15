@@ -32,7 +32,28 @@
       app
       class="blue darken-4"
     >
-      <p>test</p>
+      <v-list>
+        <v-subheader class="blue--text justify-center">
+          MENU
+        </v-subheader>
+        <v-list-item
+          v-for="link in links"
+          :key="link.text"
+          router
+          :to="link.route"
+        >
+          <v-list-item-action>
+            <v-icon color="blue darken-2">
+              {{ link.icon }}
+            </v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title class="white--text">
+              {{ link.text }}
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
     </v-navigation-drawer>
   </nav>
 </template>
@@ -42,6 +63,13 @@ export default {
   data() {
     return {
       drawer: false,
+      links: [
+        { icon: 'mdi-new-box', text: 'Newest articles', route: '/' },
+        { icon: 'mdi-newspaper-variant-outline', text: 'Politics', route: '/politics' },
+        { icon: 'mdi-newspaper-variant-outline', text: 'Sport', route: '/sport' },
+        { icon: 'mdi-newspaper-variant-outline', text: 'Business', route: '/business' },
+        { icon: 'mdi-bookmark', text: 'Articles for later', route: '/articles-for-later' },
+      ],
     };
   },
 };
